@@ -9,6 +9,12 @@ class Node():
     def __init__(self) -> None:
         pass
 
+    def __str__(self):
+        for i in treeGraph:
+            print(i)
+            print(treeGraph[i])
+            print("_________")
+
     def addNode(self,name):
         self.name = name
         if treeGraph == {}:
@@ -29,11 +35,15 @@ class Node():
             if i == self.parent:
                 treeGraph[self.parent] = self.children
             else:
-                raise KeyError ("Parent node does not exist")
+                pass
 
 
 
 N = Node()
 N.addNode("Elizabeth")
+N.addNode("Mary")
+
 N.addChildren("Elizabeth",["Charles", "Andrew"])
+N.addChildren("Mary",["Francois","Charlie"])
+
 print(treeGraph)
