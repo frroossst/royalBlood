@@ -1,0 +1,20 @@
+## Royal Blood
+
+- a basic command prompt game where you create a royal family and a royal inheritance tree is constructed
+- use verbs to modify the tree and "play" the game
+    - /kill : to remove an inheritor and change the line of succession
+    - /add : to add an inheritor
+    - /inherit : to change who inherits the crown
+- randomly generate a tree and then write a story to a text file
+- attributes of a node
+    - name
+    - parents
+    - children
+    - age
+    - popularity
+    - status (dead/alive)
+    - inheritor (default : children)
+- each node will have a name to symbolise actual royal people kinda
+- two similar node names cannot exist; if they do raise ConflictError
+- add a queen regent if the inheritor is too young
+- add random events to maybe stage a coup or disease or a victory for the king to increase and decrease their popularity
