@@ -5,9 +5,10 @@ import json
 
 treeGraph = {}
 attributeDict = {}
-root = []
 
 class Node():
+
+    root = ""
 
     def __init__(self) -> None:
         pass
@@ -15,8 +16,11 @@ class Node():
     def __str__(self):
         print(treeGraph)
 
-    def addNode(self,nodeName):
+    def addNode(self,nodeName,isRoot=False):
         self.nodeName = nodeName
+
+        if isRoot:
+            root = self.nodeName
 
         if self.nodeName not in treeGraph:
             treeGraph[self.nodeName] = []
@@ -27,7 +31,7 @@ class Node():
     def updateNode(self,node,what):
         self.node = node
         self.what = what
-
+        print(self.node)
         if self.node not in treeGraph:
             raise KeyError ("Node does not exist")
         else:
@@ -53,11 +57,11 @@ class Node():
                     else:
                         break
                 Node.addChildren(self,self.node,children)
-                attributeDict[self.node]["children"] = children
+                
                 for i in children:
                     treeGraph[i] = []
             else:
-                raise SyntaxError ("what argument not passed")
+                raise SyntaxError ("missing positional argument 'what'")
 
     def addChildren(self,parent,children): #children is a list of strings
         self.parent = parent
@@ -71,19 +75,24 @@ class Node():
     def printTree(self):
         
         visited = []
-        queue = []
-        queue.append(list(treeGraph.keys())[0])
-        print(f"root = {queue[0]}")
-        for parent, child in treeGraph.items():
-            while queue: # continues till queue is a non-empty list
-                for i in treeGraph[queue[0]]:
-                    
+        visible = []
+        for parent, children in treeGraph.items():
+            if parent not in visited:
+                visited.append(parent)
+                visible.append(children)
+                print(parent)
+                for i in visible:
+                    print(i, end=" | ")
+            visited, visible = [], []
 
 
 
 N = Node()
-N.addNode("Elizabeth")
-N.updateNode("Elizabeth","children")
+N.addNode("A",isRoot=True)
+N.updateNode("A","children")
+N.updateNode("B","children")
+N.updateNode("C","children")
+
 print(treeGraph)
 # print(attributeDict)
 N.printTree()
