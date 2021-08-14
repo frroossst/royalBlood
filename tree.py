@@ -5,6 +5,7 @@ import json
 
 treeGraph = {}
 attributeDict = {}
+root = []
 
 class Node():
 
@@ -16,6 +17,7 @@ class Node():
 
     def addNode(self,nodeName):
         self.nodeName = nodeName
+
         if self.nodeName not in treeGraph:
             treeGraph[self.nodeName] = []
             attributeDict[self.nodeName] = {}
@@ -53,7 +55,7 @@ class Node():
                 Node.addChildren(self,self.node,children)
                 attributeDict[self.node]["children"] = children
                 for i in children:
-                    treeGraph[i] = None
+                    treeGraph[i] = []
             else:
                 raise SyntaxError ("what argument not passed")
 
@@ -67,18 +69,21 @@ class Node():
 
     @classmethod
     def printTree(self):
+        
         visited = []
-        for i in treeGraph:
-            if i not in visited:
-                visited.append(i)
-                print(i)
+        queue = []
+        queue.append(list(treeGraph.keys())[0])
+        print(f"root = {queue[0]}")
+        for parent, child in treeGraph.items():
+            while queue: # continues till queue is a non-empty list
+                for i in treeGraph[queue[0]]:
+                    
+
+
 
 N = Node()
-
 N.addNode("Elizabeth")
-N.addNode("Mary")
 N.updateNode("Elizabeth","children")
-print(type(treeGraph["Lise"]))
 print(treeGraph)
-print(attributeDict)
+# print(attributeDict)
 N.printTree()
