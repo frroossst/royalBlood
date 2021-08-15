@@ -95,8 +95,12 @@ class Node():
     def printTree(self):
         rootNode = Node.getRoot()
         bfsVisited = Node.BFS(treeGraph,rootNode)
-        for i in treeGraph.values():
-            if 
+        top = []
+        keys = list(treeGraph.keys())
+        values = list(treeGraph.values())
+        for i in keys:
+            if i not in values:
+                print(i)
 
 
 N = Node()
