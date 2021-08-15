@@ -72,24 +72,31 @@ class Node():
             raise KeyError ("Node does not exist")
 
     @classmethod
-    def printTree(self):
+    def getRoot(self):
+        return Node.root
+
+    @classmethod
+    def BFS(self,graph,node):
+        # node is the starting position
+        # graph is the graph in dictionary format
+        visited=[]
+        queue=[]    
+        visited.append(node)
+        queue.append(node)
         
-        visited = []
-        visible = []
-        queue = []
-        level = []
-        queue.append(Node.root)
         while queue:
-            for i in queue:
-                visible.extend(treeGraph[i])
-                visited.append(i)
-                queue.extend(visible)
-                level.extend(visible)
-            print(level)
-            queue.pop(0)
+            s = queue.pop(0)
+            for x in graph[s]:
+                if x not in visited:
+                    visited.append(x)
+                    queue.append(x)
+        return visited
 
-            
-
+    def printTree(self):
+        rootNode = Node.getRoot()
+        bfsVisited = Node.BFS(treeGraph,rootNode)
+        for i in treeGraph.values():
+            if 
 
 
 N = Node()
@@ -97,7 +104,7 @@ N.addNode("A",isRoot=True)
 N.updateNode("A","children")
 N.updateNode("B","children")
 N.updateNode("C","children")
-
-print(treeGraph)
+rootNode = N.getRoot()
+# print(treeGraph)
 # print(attributeDict)
 N.printTree()
