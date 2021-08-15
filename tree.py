@@ -20,7 +20,7 @@ class Node():
         self.nodeName = nodeName
 
         if isRoot:
-            root = self.nodeName
+            Node.root = self.nodeName
 
         if self.nodeName not in treeGraph:
             treeGraph[self.nodeName] = []
@@ -49,7 +49,7 @@ class Node():
                 attributeDict[self.node]["married to"] = marriage
             elif self.what == "children":
                 children = []
-                print("enter list of children : ")
+                print("enter children : ")
                 while True:
                     addChild = input("enter child name : ")
                     if addChild != "/break":
@@ -76,14 +76,19 @@ class Node():
         
         visited = []
         visible = []
-        for parent, children in treeGraph.items():
-            if parent not in visited:
-                visited.append(parent)
-                visible.append(children)
-                print(parent)
-                for i in visible:
-                    print(i, end=" | ")
-            visited, visible = [], []
+        queue = []
+        level = []
+        queue.append(Node.root)
+        while queue:
+            for i in queue:
+                visible.extend(treeGraph[i])
+                visited.append(i)
+                queue.extend(visible)
+                level.extend(visible)
+            print(level)
+            queue.pop(0)
+
+            
 
 
 
