@@ -72,7 +72,7 @@ class Node():
             raise KeyError ("Node does not exist")
 
     @classmethod
-    def getRoot(self):
+    def getRoot(self) -> str:
         return Node.root
 
     @classmethod
@@ -101,6 +101,36 @@ class Node():
         for i in keys:
             if i not in values:
                 print(i)
+
+    def getAttributes(self,nodeName):
+                
+        with open("attributes.json","r") as fobj:
+            content = json.load(fobj)
+
+        if nodeName == "all":
+            all = True
+            print(content)
+        else:
+            if nodeName not in content:
+                raise KeyError ("Node not found")
+            else:
+                print(content[nodeName])
+
+    def addAttribut(self,nodeName,attribute,data):
+        
+        with open("attributes.json","r") as fobj:
+            content = json.load(fobj)
+
+        if attribute == "/children":
+            pass
+        elif attribute == "/title":
+            content[nodeName]["title"] = data
+        elif attribute == "":
+            pass
+        else:
+            raise Exception ("missing attribute type")
+
+
 
 
 N = Node()
