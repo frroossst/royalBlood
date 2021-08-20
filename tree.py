@@ -2,6 +2,8 @@
 # tree dict fmt => {"parent" : [child0,child1], "child0" : None, "child1" : None, ...}
 
 import json
+from json.decoder import JSONDecodeError
+from types import DynamicClassAttribute
 
 treeGraph = {}
 attributeDict = {}
@@ -11,13 +13,22 @@ class Node():
     root = ""
 
     def __init__(self) -> None:
-        pass
+        with open("attributes.json","w") as fobj:
+            fobj.close()
 
     def __str__(self):
         print(treeGraph)
 
     def addNode(self,nodeName,isRoot=False):
         self.nodeName = nodeName
+
+        with open("attributes.json","r") as fobj:
+            try:
+                content = json.load(fobj)
+            except JSONDecodeError:
+                content = {}
+            finally:
+                fobj.close()
 
         if isRoot:
             Node.root = self.nodeName
@@ -27,6 +38,10 @@ class Node():
             attributeDict[self.nodeName] = {}
         else:
             raise KeyError ("Node already exists")
+
+        with open("attributes.json","w") as fobj:
+            json.dump(attributeDict,fobj,indent=6)
+            fobj.close()
 
     def updateNode(self,node,what):
         self.node = node
@@ -116,7 +131,7 @@ class Node():
             else:
                 print(content[nodeName])
 
-    def addAttribut(self,nodeName,attribute,data):
+    def addAttribute(self,nodeName,attribute,data):
         
         with open("attributes.json","r") as fobj:
             content = json.load(fobj)
@@ -125,11 +140,16 @@ class Node():
             pass
         elif attribute == "/title":
             content[nodeName]["title"] = data
-        elif attribute == "":
-            pass
+        elif attribute == "/marriage":
+            content[nodeName]["marriage"] = data
+        elif attribute == "/house":
+            content[nodeName]["house"] = data
         else:
             raise Exception ("missing attribute type")
 
+        with open("attributes.json","w") as fobj:
+            json.dump(content,fobj,indent=6)
+            fobj.close()
 
 
 
@@ -142,3 +162,5 @@ rootNode = N.getRoot()
 # print(treeGraph)
 # print(attributeDict)
 N.printTree()
+N.addAttribute("A","/title","Queen")
+N.getAttributes("A")
