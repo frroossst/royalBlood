@@ -7,10 +7,12 @@ from types import DynamicClassAttribute
 
 treeGraph = {}
 attributeDict = {}
+parentDict = {}
 
 class Node():
 
     root = ""
+    visiteD = []
 
     def __init__(self) -> None:
         with open("attributes.json","w") as fobj:
@@ -42,6 +44,12 @@ class Node():
         with open("attributes.json","w") as fobj:
             json.dump(attributeDict,fobj,indent=6)
             fobj.close()
+
+        val = []
+        for i in treeGraph:
+            val.extend(treeGraph[i])
+        if self.nodeName not in val and self.nodeName in treeGraph: #check is parent-less condition
+            parentDict[self.nodeName] = None
 
     def updateNode(self,node,what):
         self.node = node
@@ -85,12 +93,21 @@ class Node():
             treeGraph[self.parent].extend(self.children)
         else:
             raise KeyError ("Node does not exist")
+        
+    def updateParents(self):
+        val = []
+        key= treeGraph.keys()
 
-    @classmethod
+        for i in treeGraph:
+            val.extend(treeGraph[i])
+        
+        for i in key:
+            if i not in val:
+                parentDict[i] = None
+
     def getRoot(self) -> str:
         return Node.root
 
-    @classmethod
     def BFS(self,graph,node):
         # node is the starting position
         # graph is the graph in dictionary format
@@ -106,6 +123,15 @@ class Node():
                     visited.append(x)
                     queue.append(x)
         return visited
+
+    def DFS(self,graph,node):
+        
+        if node not in Node.visiteD:
+            Node.visiteD.append(node)
+            for neighbour in treeGraph[node]:
+                Node.DFS(Node.visiteD, treeGraph, neighbour)
+
+        return Node.visiteD
 
     def printTree(self):
         rootNode = Node.getRoot()
@@ -161,6 +187,10 @@ N.updateNode("C","children")
 rootNode = N.getRoot()
 # print(treeGraph)
 # print(attributeDict)
-N.printTree()
-N.addAttribute("A","/title","Queen")
-N.getAttributes("A")
+bfs = N.BFS(treeGraph,rootNode)
+dfs = N.DFS(treeGraph,rootNode)
+print(bfs)
+print(dfs)
+# N.printTree()
+# N.addAttribute("A","/title","Queen")
+# N.getAttributes("A")
