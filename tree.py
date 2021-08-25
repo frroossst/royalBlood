@@ -51,41 +51,6 @@ class Node():
         if self.nodeName not in val and self.nodeName in treeGraph: #check is parent-less condition
             parentDict[self.nodeName] = None
 
-    def updateNode(self,node,what):
-        self.node = node
-        self.what = what
-        print(self.node)
-        if self.node not in treeGraph:
-            raise KeyError ("Node does not exist")
-        else:
-            if self.what == "title":
-                title = input("enter title : ")
-                attributeDict[self.node]["title"] = title
-            elif self.what == "house":
-                house = input("enter house name : ")
-                attributeDict[self.node]["house"] = house
-            elif self.what == "age":
-                age = int(input("enter age : "))
-                attributeDict[self.node]["age"] = age
-            elif self.what == "marriage":
-                marriage = input("married to : ")
-                attributeDict[self.node]["married to"] = marriage
-            elif self.what == "children":
-                children = []
-                print("enter children : ")
-                while True:
-                    addChild = input("enter child name : ")
-                    if addChild != "/break":
-                        children.append(addChild)
-                    else:
-                        break
-                Node.addChildren(self,self.node,children)
-                
-                for i in children:
-                    treeGraph[i] = []
-            else:
-                raise SyntaxError ("missing positional argument 'what'")
-
     def addChildren(self,parent,children): #children is a list of strings
         self.parent = parent
         self.children = children
@@ -107,31 +72,6 @@ class Node():
 
     def getRoot(self) -> str:
         return Node.root
-
-    def BFS(self,graph,node):
-        # node is the starting position
-        # graph is the graph in dictionary format
-        visited=[]
-        queue=[]    
-        visited.append(node)
-        queue.append(node)
-        
-        while queue:
-            s = queue.pop(0)
-            for x in graph[s]:
-                if x not in visited:
-                    visited.append(x)
-                    queue.append(x)
-        return visited
-
-    def DFS(self,graph,node):
-        
-        if node not in Node.visiteD:
-            Node.visiteD.append(node)
-            for neighbour in treeGraph[node]:
-                Node.DFS(Node.visiteD, treeGraph, neighbour)
-
-        return Node.visiteD
 
     def printTree(self):
         rootNode = Node.getRoot()
@@ -179,18 +119,35 @@ class Node():
 
 
 
-N = Node()
-N.addNode("A",isRoot=True)
-N.updateNode("A","children")
-N.updateNode("B","children")
-N.updateNode("C","children")
-rootNode = N.getRoot()
-# print(treeGraph)
-# print(attributeDict)
-bfs = N.BFS(treeGraph,rootNode)
-dfs = N.DFS(treeGraph,rootNode)
-print(bfs)
-print(dfs)
-# N.printTree()
-# N.addAttribute("A","/title","Queen")
-# N.getAttributes("A")
+class Algorithm():
+
+    def __init__(self) -> None:
+        pass
+
+    @classmethod
+    def BFS(self,graph,node):
+        # node is the starting position
+        # graph is the graph in dictionary format
+        visited=[]
+        queue=[]    
+        visited.append(node)
+        queue.append(node)
+        
+        while queue:
+            s = queue.pop(0)
+            for x in graph[s]:
+                if x not in visited:
+                    visited.append(x)
+                    queue.append(x)
+        return visited
+
+    @classmethod
+    def DFS(self,graph,node):
+        
+        if node not in Node.visiteD:
+            Node.visiteD.append(node)
+            for neighbour in treeGraph[node]:
+                Node.DFS(Node.visiteD, treeGraph, neighbour)
+
+        return Node.visiteD
+
