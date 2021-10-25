@@ -1,7 +1,5 @@
-# attribute dict fmt => {"parent" : [{"children" : []}, {"name" : "NAME"} ], {"age" : int}, {"marriage" : }, {"house" : }, {...}}
-# tree dict fmt => {"parent" : [child0,child1], "child0" : None, "child1" : None, ...}
-
 import json
+import math
 
 
 
@@ -45,6 +43,11 @@ class method():
         pass
 
     @classmethod
+    def clearall(self) -> None:
+        empty = {}
+        method.dumpJSON(empty,"server.json")
+
+    @classmethod
     def loadJSON(self,file) -> dict:
         self.filename = file
         try:
@@ -86,7 +89,8 @@ class node():
         if self.name in content:
             raise ValueError ("duplicate nodes cannot exist")
 
-        dictFMT = {"children" : [], "alive" : True}
+        dictFMT = {"children" : [], "alive" : True, "age" : math.nan, "marriage" : "", 
+        "position" : "", "house" : ""}
 
         content[self.name] = dictFMT
         dataintegrity = method.dumpJSON(content,"server.json")
@@ -101,12 +105,35 @@ class node():
 
         content = method.loadJSON("server.json")
 
+        for i in self.children:
+            if i in content:
+                raise ValueError ("all names must be globally unique")
+
         content[self.parent]["children"] = self.children
+
+        method.dumpJSON(content,"server.json")
+
+        for j in self.children:
+            N = node()
+            N.addNode(j)
+
+    def addAge(self,name,age):
+        self.name = name
+        self.age = age
+
+        if not isinstance(self.age,int):
+            raise TypeError ("age argument must be an integer")
+
+        content = method.loadJSON("server.json")
+
+        content[self.name]["age"] = self.age
 
         method.dumpJSON(content,"server.json")
 
 
 
 N = node()
+method.clearall()
 N.addNode("Elizabeth")
 N.addChildren("Elizabeth",["Edward","Andrew"])
+N.addAge("Elizabeth",95)

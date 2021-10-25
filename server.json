@@ -4,6 +4,26 @@
                   "Edward",
                   "Andrew"
             ],
-            "alive": true
+            "alive": true,
+            "age": 95,
+            "marriage": "",
+            "position": "",
+            "house": ""
+      },
+      "Edward": {
+            "children": [],
+            "alive": true,
+            "age": NaN,
+            "marriage": "",
+            "position": "",
+            "house": ""
+      },
+      "Andrew": {
+            "children": [],
+            "alive": true,
+            "age": NaN,
+            "marriage": "",
+            "position": "",
+            "house": ""
       }
 }
