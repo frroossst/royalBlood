@@ -2,120 +2,6 @@
 # tree dict fmt => {"parent" : [child0,child1], "child0" : None, "child1" : None, ...}
 
 import json
-from json.decoder import JSONDecodeError
-from types import DynamicClassAttribute
-
-treeGraph = {}
-attributeDict = {}
-parentDict = {}
-
-class Node():
-
-    root = ""
-    visiteD = []
-
-    def __init__(self) -> None:
-        with open("attributes.json","w") as fobj:
-            fobj.close()
-
-    def __str__(self):
-        print(treeGraph)
-
-    def addNode(self,nodeName,isRoot=False):
-        self.nodeName = nodeName
-
-        with open("attributes.json","r") as fobj:
-            try:
-                content = json.load(fobj)
-            except JSONDecodeError:
-                content = {}
-            finally:
-                fobj.close()
-
-        if isRoot:
-            Node.root = self.nodeName
-
-        if self.nodeName not in treeGraph:
-            treeGraph[self.nodeName] = []
-            attributeDict[self.nodeName] = {}
-        else:
-            raise KeyError ("Node already exists")
-
-        with open("attributes.json","w") as fobj:
-            json.dump(attributeDict,fobj,indent=6)
-            fobj.close()
-
-        val = []
-        for i in treeGraph:
-            val.extend(treeGraph[i])
-        if self.nodeName not in val and self.nodeName in treeGraph: #check is parent-less condition
-            parentDict[self.nodeName] = None
-
-    def addChildren(self,parent,children): #children is a list of strings
-        self.parent = parent
-        self.children = children
-        if self.parent in treeGraph:
-            treeGraph[self.parent].extend(self.children)
-        else:
-            raise KeyError ("Node does not exist")
-        
-    def updateParents(self):
-        val = []
-        key= treeGraph.keys()
-
-        for i in treeGraph:
-            val.extend(treeGraph[i])
-        
-        for i in key:
-            if i not in val:
-                parentDict[i] = None
-
-    def getRoot(self) -> str:
-        return Node.root
-
-    def printTree(self):
-        rootNode = Node.getRoot()
-        bfsVisited = Node.BFS(treeGraph,rootNode)
-        top = []
-        keys = list(treeGraph.keys())
-        values = list(treeGraph.values())
-        for i in keys:
-            if i not in values:
-                print(i)
-
-    def getAttributes(self,nodeName):
-                
-        with open("attributes.json","r") as fobj:
-            content = json.load(fobj)
-
-        if nodeName == "all":
-            all = True
-            print(content)
-        else:
-            if nodeName not in content:
-                raise KeyError ("Node not found")
-            else:
-                print(content[nodeName])
-
-    def addAttribute(self,nodeName,attribute,data):
-        
-        with open("attributes.json","r") as fobj:
-            content = json.load(fobj)
-
-        if attribute == "/children":
-            pass
-        elif attribute == "/title":
-            content[nodeName]["title"] = data
-        elif attribute == "/marriage":
-            content[nodeName]["marriage"] = data
-        elif attribute == "/house":
-            content[nodeName]["house"] = data
-        else:
-            raise Exception ("missing attribute type")
-
-        with open("attributes.json","w") as fobj:
-            json.dump(content,fobj,indent=6)
-            fobj.close()
 
 
 
@@ -126,7 +12,7 @@ class Algorithm():
 
     @classmethod
     def BFS(self,graph,node):
-        # node is the starting position
+        # node is the starting position (in most cases the root)
         # graph is the graph in dictionary format
         visited=[]
         queue=[]    
@@ -143,11 +29,19 @@ class Algorithm():
 
     @classmethod
     def DFS(self,graph,node):
-        
-        if node not in Node.visiteD:
-            Node.visiteD.append(node)
-            for neighbour in treeGraph[node]:
-                Node.DFS(Node.visiteD, treeGraph, neighbour)
+        visited=[]
+        queue=[]            
 
-        return Node.visiteD
+        if node not in visited:
+            visited.append(node)
+            for neighbour in graph[node]:
+                Algorithm.DFS(visited, graph, neighbour)
 
+        return visited
+
+class Node():
+
+    def __init__(self) -> None:
+        pass
+
+    
