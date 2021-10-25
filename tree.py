@@ -5,7 +5,7 @@ import json
 
 
 
-class Algorithm():
+class algorithm():
 
     def __init__(self) -> None:
         pass
@@ -35,13 +35,78 @@ class Algorithm():
         if node not in visited:
             visited.append(node)
             for neighbour in graph[node]:
-                Algorithm.DFS(visited, graph, neighbour)
+                algorithm.DFS(visited, graph, neighbour)
 
         return visited
 
-class Node():
+class method():
 
     def __init__(self) -> None:
         pass
 
-    
+    @classmethod
+    def loadJSON(self,file) -> dict:
+        self.filename = file
+        try:
+            with open(self.filename,"r") as fobj:
+                content = json.load(fobj)
+                fobj.close()
+        except:
+            return None
+
+        return content
+        
+    @classmethod
+    def dumpJSON(self,data,file) -> bool:
+        try:
+            with open(file,"w") as fobj:
+                json.dump(data,fobj,indent=6)
+                fobj.close()
+            return True
+        except:
+            return False
+
+    @classmethod
+    def checkDump(self,response) -> bool:
+        if response:
+            return True
+        else:
+            raise Exception ("[ERROR] data dump failed")
+
+
+class node():
+
+    def __init__(self) -> None:
+        pass
+
+    def addNode(self,name) -> None:
+        self.name = name
+
+        content = method.loadJSON("server.json")
+        if self.name in content:
+            raise ValueError ("duplicate nodes cannot exist")
+
+        dictFMT = {"children" : [], "alive" : True}
+
+        content[self.name] = dictFMT
+        dataintegrity = method.dumpJSON(content,"server.json")
+        method.checkDump(dataintegrity)
+
+    def addChildren(self,parent,children) -> None:
+        self.parent = parent
+        self.children = children
+
+        if not isinstance(self.children,list):
+            raise TypeError ("children argument must be a list")
+
+        content = method.loadJSON("server.json")
+
+        content[self.parent]["children"] = self.children
+
+        method.dumpJSON(content,"server.json")
+
+
+
+N = node()
+N.addNode("Elizabeth")
+N.addChildren("Elizabeth",["Edward","Andrew"])
