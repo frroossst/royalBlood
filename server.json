@@ -6,9 +6,10 @@
             ],
             "alive": true,
             "age": 95,
-            "marriage": "",
-            "position": "",
-            "house": ""
+            "marriage": "Phillip",
+            "position": "Queen",
+            "house": "Windsor",
+            "root": true
       },
       "Edward": {
             "children": [],
