@@ -1,6 +1,5 @@
 import json
 import math
-from typing import ValuesView
 
 
 
@@ -41,7 +40,7 @@ class method():
         if response:
             return True
         else:
-            raise Exception ("[ERROR] data dump failed")
+            raise Exception ("data dump failed")
 
 
 
@@ -93,7 +92,7 @@ class node():
         if self.name in content:
             raise ValueError ("duplicate nodes cannot exist")
 
-        dictFMT = {"children" : [], "alive" : True, "age" : math.nan, "marriage" : "", 
+        dictFMT = {"children" : [], "alive" : True, "age" : math.nan, "spouse" : "", 
         "position" : "", "house" : ""}
 
         content[self.name] = dictFMT
@@ -131,18 +130,24 @@ class node():
 
         content = method.loadJSON("server.json")
 
-        content[self.name]["age"] = self.age
+        try:
+            content[self.name]["age"] = self.age
+        except:
+            raise KeyError ("node does not exist")
 
         dataintegrity = method.dumpJSON(content,"server.json")
         method.checkDump(dataintegrity)
 
-    def addMarriage(self,name,spouse):
+    def addSpouse(self,name,spouse):
         self.name = name
         self.spouse = spouse
 
         content = method.loadJSON("server.json")
 
-        content[self.name]["marriage"] = self.spouse
+        if self.spouse not in content.keys():
+            raise ValueError ("spouse must exist as a node")
+
+        content[self.name]["spouse"] = self.spouse
 
         dataintegrity = method.dumpJSON(content,"server.json")
         method.checkDump(dataintegrity)
@@ -187,6 +192,29 @@ class node():
         dataintegrity = method.dumpJSON(content,"server.json")
         method.checkDump(dataintegrity)
 
+    def addGuardian(self,name,guardian):
+        self.name = name
+        self.guardian = guardian
+
+        content = method.loadJSON("server.json")
+
+        if self.guardian not in content.keys():
+            raise ValueError ("guardian must exist as a node")
+        
+        elif content[self.name]["age"] < 18:
+            raise Exception ("age must be below 18 for a guardian to be appointed")
+
+        elif math.isnan(content[self.guardian]["age"]):
+            raise Exception ("guardian must have a defined age")
+
+        elif content[self.guardian]["age"] < 18: 
+            raise Exception ("guardian must be above the age of 18")
+
+        content[self.name]["guardian"] = self.guardian
+
+        dataintegrity = method.dumpJSON(content,"server.json")
+        method.checkDump(dataintegrity)
+
 
 
 N = node()
@@ -194,7 +222,13 @@ method.clearall()
 N.addNode("Elizabeth")
 N.addChildren("Elizabeth",["Edward","Andrew"])
 N.addAge("Elizabeth",95)
+N.addAge("Edward",15)
+N.addAge("Andrew",21)
 N.addHouse("Elizabeth","Windsor")
-N.addMarriage("Elizabeth","Phillip")
+N.addNode("Phillip")
+N.addSpouse("Elizabeth","Phillip")
 N.addPosition("Elizabeth","Queen")
 N.defineRoot("Elizabeth")
+N.addNode("Mary")
+N.addAge("Mary",21)
+N.addGuardian("Andrew","Mary")

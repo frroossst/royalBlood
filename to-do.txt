@@ -1,1 +1,1 @@
-- restructure classes for nodes and algo
+- add ordering for the crown

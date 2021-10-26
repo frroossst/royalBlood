@@ -6,7 +6,7 @@
             ],
             "alive": true,
             "age": 95,
-            "marriage": "Phillip",
+            "spouse": "Phillip",
             "position": "Queen",
             "house": "Windsor",
             "root": true
@@ -14,16 +14,33 @@
       "Edward": {
             "children": [],
             "alive": true,
-            "age": NaN,
-            "marriage": "",
+            "age": 15,
+            "spouse": "",
             "position": "",
             "house": ""
       },
       "Andrew": {
             "children": [],
             "alive": true,
+            "age": 21,
+            "spouse": "",
+            "position": "",
+            "house": "",
+            "guardian": "Mary"
+      },
+      "Phillip": {
+            "children": [],
+            "alive": true,
             "age": NaN,
-            "marriage": "",
+            "spouse": "",
+            "position": "",
+            "house": ""
+      },
+      "Mary": {
+            "children": [],
+            "alive": true,
+            "age": 21,
+            "spouse": "",
             "position": "",
             "house": ""
       }
