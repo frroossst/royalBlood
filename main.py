@@ -20,7 +20,8 @@ class method():
             with open(self.filename,"r") as fobj:
                 content = json.load(fobj)
                 fobj.close()
-        except:
+        except Exception as e:
+            # print(e)
             return None
 
         return content
@@ -99,6 +100,16 @@ class node():
         dataintegrity = method.dumpJSON(content,"server.json")
         method.checkDump(dataintegrity)
 
+    def deleteNode(self,name):
+        self.name = name
+
+        content = method.loadJSON("server.json")
+
+        del content[self.name]
+
+        dataintegrity = method.dumpJSON(content,"server.json")
+        method.checkDump(dataintegrity)
+
     def addChildren(self,parent,children) -> None:
         self.parent = parent
         self.children = children
@@ -138,6 +149,17 @@ class node():
         dataintegrity = method.dumpJSON(content,"server.json")
         method.checkDump(dataintegrity)
 
+    @classmethod
+    def getAge(self,name):
+        self.name = name
+
+        content = method.loadJSON("server.json")
+
+        age = content[self.name]["age"]
+
+        return age
+
+
     def addSpouse(self,name,spouse):
         self.name = name
         self.spouse = spouse
@@ -163,6 +185,16 @@ class node():
         dataintegrity = method.dumpJSON(content,"server.json")
         method.checkDump(dataintegrity)
 
+    def removePosition(self,name):
+        self.name = name
+
+        content = method.loadJSON("server.json")
+
+        content[self.name]["position"] = ""
+
+        dataintegrity = method.dumpJSON(content,"server.json")
+        method.checkDump(dataintegrity)
+
     def addHouse(self,name,house):
         self.name = name
         self.house = house
@@ -170,6 +202,16 @@ class node():
         content = method.loadJSON("server.json")
 
         content[self.name]["house"] = self.house
+
+        dataintegrity = method.dumpJSON(content,"server.json")
+        method.checkDump(dataintegrity)
+
+    def removeHouse(self,name):
+        self.name = name
+
+        content = method.loadJSON("server.json")
+
+        content[self.name]["house"] = ""
 
         dataintegrity = method.dumpJSON(content,"server.json")
         method.checkDump(dataintegrity)
@@ -215,20 +257,70 @@ class node():
         dataintegrity = method.dumpJSON(content,"server.json")
         method.checkDump(dataintegrity)
 
+    def removeGuardian(self,name):
+        self.name = name
+
+        content = method.loadJSON("server.json")
+
+        content[self.name]["guardian"] = ""
+
+        dataintegrity = method.dumpJSON(content,"server.json")
+        method.checkDump(dataintegrity)
 
 
-N = node()
-method.clearall()
-N.addNode("Elizabeth")
-N.addChildren("Elizabeth",["Edward","Andrew"])
-N.addAge("Elizabeth",95)
-N.addAge("Edward",15)
-N.addAge("Andrew",21)
-N.addHouse("Elizabeth","Windsor")
-N.addNode("Phillip")
-N.addSpouse("Elizabeth","Phillip")
-N.addPosition("Elizabeth","Queen")
-N.defineRoot("Elizabeth")
-N.addNode("Mary")
-N.addAge("Mary",21)
-N.addGuardian("Andrew","Mary")
+
+class game():
+
+    def __init__(self) -> None:
+        pass
+
+    # method for creating the crown order
+    def setCrownOrder(self):
+        # content = method.loadJSON("server.json")
+        # A = algorithm()
+        # A.DFS(content,"Elizabeth")
+        pass
+
+    # method for ordering children
+    def constructOrder(self):
+        
+        content = method.loadJSON("server.json")
+
+        for i in content:
+            ageLi = []
+            childrenSorted = []
+            childrenLi = content[i]["children"]
+            for j in childrenLi:
+                ageLi.append(node.getAge(j))
+
+            zipped = zip(childrenLi,ageLi)
+            ageSorted = (sorted(zipped, key = lambda t: t[1]))
+
+            for k in ageSorted[::-1]:
+                childrenSorted.append(k[0])
+            
+            content[i]["children"] = childrenSorted
+
+        method.dumpJSON(content,"server.json")
+
+
+
+
+# N = node()
+# method.clearall()
+# N.addNode("Elizabeth")
+# N.addChildren("Elizabeth",["Edward","Andrew"])
+# N.addAge("Elizabeth",95)
+# N.addAge("Edward",15)
+# N.addAge("Andrew",21)
+# N.addHouse("Elizabeth","Windsor")
+# N.addNode("Phillip")
+# N.addSpouse("Elizabeth","Phillip")
+# N.addPosition("Elizabeth","Queen")
+# N.defineRoot("Elizabeth")
+# N.addNode("Mary")
+# N.addAge("Mary",21)
+# N.addGuardian("Andrew","Mary")
+G = game()
+G.constructOrder()
+# G.setCrownOrder()

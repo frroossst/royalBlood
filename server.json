@@ -12,7 +12,10 @@
             "root": true
       },
       "Edward": {
-            "children": [],
+            "children": [
+                  "EC0",
+                  "EC1"
+            ],
             "alive": true,
             "age": 15,
             "spouse": "",
@@ -20,7 +23,10 @@
             "house": ""
       },
       "Andrew": {
-            "children": [],
+            "children": [
+                  "AC1",
+                  "AC0"
+            ],
             "alive": true,
             "age": 21,
             "spouse": "",
@@ -40,6 +46,38 @@
             "children": [],
             "alive": true,
             "age": 21,
+            "spouse": "",
+            "position": "",
+            "house": ""
+      },
+      "EC0": {
+            "children": [],
+            "alive": true,
+            "age": 11,
+            "spouse": "",
+            "position": "",
+            "house": ""
+      },
+      "EC1": {
+            "children": [],
+            "alive": true,
+            "age": 4,
+            "spouse": "",
+            "position": "",
+            "house": ""
+      },
+      "AC0": {
+            "children": [],
+            "alive": true,
+            "age": 40,
+            "spouse": "",
+            "position": "",
+            "house": ""
+      },
+      "AC1": {
+            "children": [],
+            "alive": true,
+            "age": 50,
             "spouse": "",
             "position": "",
             "house": ""
