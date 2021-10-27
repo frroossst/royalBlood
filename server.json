@@ -9,7 +9,8 @@
             "spouse": "Phillip",
             "position": "Queen",
             "house": "Windsor",
-            "root": true
+            "root": true,
+            "crownOrder": 1
       },
       "Edward": {
             "children": [
@@ -20,7 +21,8 @@
             "age": 15,
             "spouse": "",
             "position": "",
-            "house": ""
+            "house": "",
+            "crownOrder": 5
       },
       "Andrew": {
             "children": [
@@ -32,7 +34,8 @@
             "spouse": "",
             "position": "",
             "house": "",
-            "guardian": "Mary"
+            "guardian": "Mary",
+            "crownOrder": 2
       },
       "EC0": {
             "children": [],
@@ -40,7 +43,8 @@
             "age": 11,
             "spouse": "",
             "position": "",
-            "house": ""
+            "house": "",
+            "crownOrder": 6
       },
       "EC1": {
             "children": [],
@@ -48,7 +52,8 @@
             "age": 4,
             "spouse": "",
             "position": "",
-            "house": ""
+            "house": "",
+            "crownOrder": 7
       },
       "AC0": {
             "children": [],
@@ -56,6 +61,16 @@
             "age": 40,
             "spouse": "",
             "position": "",
-            "house": ""
+            "house": "",
+            "crownOrder": 4
+      },
+      "AC1": {
+            "children": [],
+            "alive": true,
+            "age": 40,
+            "spouse": "",
+            "position": "",
+            "house": "",
+            "crownOrder": 3
       }
 }

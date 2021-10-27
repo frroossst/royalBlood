@@ -1,5 +1,6 @@
 import json
 import math
+from typing import ContextManager
 
 
 
@@ -68,15 +69,12 @@ class algorithm():
         return visited
 
     @classmethod
-    def DFS(self,graph,node):
-        visited=[]
-        queue=[]            
+    def DFS(self, graph, node, visited):
 
         if node not in visited:
             visited.append(node)
-            for neighbour in graph[node]:
-                algorithm.DFS(visited, graph, neighbour)
-
+            for k in graph[node]:
+                algorithm.DFS(graph,k, visited)
         return visited
 
 
@@ -239,7 +237,7 @@ class node():
                 pass
 
         content[self.name]["root"] = True
-        content[self.name]["crownOrder"] = 1
+        # content[self.name]["crownOrder"] = 1
 
         dataintegrity = method.dumpJSON(content,"server.json")
         method.checkDump(dataintegrity)
@@ -324,7 +322,18 @@ class game():
 
     # method for creating the crown order
     def setCrownOrder(self):
-        pass
+        G = game()
+        N = node()
+        G.constructTree()
+
+        treeGraph = method.loadJSON("tree.json")
+        content = method.loadJSON("server.json")
+
+        counter = 1
+        for i in treeGraph:
+            N.setOrder(i,counter)
+            counter += 1
+
 
     # method for ordering children
     def constructOrder(self):
@@ -353,6 +362,9 @@ class game():
         G = game()
         G.constructOrder()
 
+        N = node()
+        N.removeRogueNodes()
+
         treeGraph = {}
 
         content = method.loadJSON("server.json")
@@ -360,8 +372,13 @@ class game():
         for i in content:
             treeGraph[i] = content[i]["children"]
 
-        print(treeGraph)
+        root = N.getRoot()
 
+        dfsg = algorithm.DFS(treeGraph,root,[])
+        
+        dataintegrity = method.dumpJSON(dfsg,"tree.json")
+        method.checkDump(dataintegrity)
+        
 
 
 
@@ -382,6 +399,5 @@ N = node()
 # N.addGuardian("Andrew","Mary")
 G = game()
 # G.constructOrder()
-# G.setCrownOrder()
+G.setCrownOrder()
 # G.constructTree()
-N.removeRogueNodes()
