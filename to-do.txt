@@ -1,3 +1,4 @@
 - add ordering for the crown
 - create an aglo feedable graph
-- order children in the list according to age
+- method to visualize the tree
+- create the RPG game

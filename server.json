@@ -1,8 +1,8 @@
 {
       "Elizabeth": {
             "children": [
-                  "Edward",
-                  "Andrew"
+                  "Andrew",
+                  "Edward"
             ],
             "alive": true,
             "age": 95,
@@ -34,22 +34,6 @@
             "house": "",
             "guardian": "Mary"
       },
-      "Phillip": {
-            "children": [],
-            "alive": true,
-            "age": NaN,
-            "spouse": "",
-            "position": "",
-            "house": ""
-      },
-      "Mary": {
-            "children": [],
-            "alive": true,
-            "age": 21,
-            "spouse": "",
-            "position": "",
-            "house": ""
-      },
       "EC0": {
             "children": [],
             "alive": true,
@@ -70,14 +54,6 @@
             "children": [],
             "alive": true,
             "age": 40,
-            "spouse": "",
-            "position": "",
-            "house": ""
-      },
-      "AC1": {
-            "children": [],
-            "alive": true,
-            "age": 50,
             "spouse": "",
             "position": "",
             "house": ""

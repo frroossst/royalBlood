@@ -93,7 +93,7 @@ class node():
         if self.name in content:
             raise ValueError ("duplicate nodes cannot exist")
 
-        dictFMT = {"children" : [], "alive" : True, "age" : math.nan, "spouse" : "", 
+        dictFMT = {"children" : [], "alive" : True, "crownOrder" : math.nan, "age" : math.nan, "spouse" : "", 
         "position" : "", "house" : ""}
 
         content[self.name] = dictFMT
@@ -109,6 +109,16 @@ class node():
 
         dataintegrity = method.dumpJSON(content,"server.json")
         method.checkDump(dataintegrity)
+
+    def getRoot(self):
+
+        content = method.loadJSON("server.json")
+
+        for i in content:
+            if content[i]["root"]:
+                return i
+        else:
+            raise Exception ("root not found")
 
     def addChildren(self,parent,children) -> None:
         self.parent = parent
@@ -158,7 +168,6 @@ class node():
         age = content[self.name]["age"]
 
         return age
-
 
     def addSpouse(self,name,spouse):
         self.name = name
@@ -230,6 +239,7 @@ class node():
                 pass
 
         content[self.name]["root"] = True
+        content[self.name]["crownOrder"] = 1
 
         dataintegrity = method.dumpJSON(content,"server.json")
         method.checkDump(dataintegrity)
@@ -267,6 +277,44 @@ class node():
         dataintegrity = method.dumpJSON(content,"server.json")
         method.checkDump(dataintegrity)
 
+    def setOrder(self,name,order):
+        self.name = name
+        self.order = order
+
+        content = method.loadJSON("server.json")
+
+        content[self.name]["crownOrder"] = self.order
+
+        dataintegrity = method.dumpJSON(content,"server.json")
+        method.checkDump(dataintegrity)
+
+    def removeRogueNodes(self):
+
+        content = method.loadJSON("server.json")
+
+        allChildren = []
+        rootLi = []
+
+        N = node()
+        root = N.getRoot()
+        allChildren.append(root)
+
+        for i in content:
+            allChildren.extend(content[i]["children"])
+
+        for j in content:
+            if j not in allChildren:
+                rootLi.append(j)
+        
+        try:
+            for k in rootLi:
+                del content[k]
+        except:
+            pass
+
+        dataintegrity = method.dumpJSON(content,"server.json")
+        method.checkDump(dataintegrity)
+
 
 
 class game():
@@ -276,9 +324,6 @@ class game():
 
     # method for creating the crown order
     def setCrownOrder(self):
-        # content = method.loadJSON("server.json")
-        # A = algorithm()
-        # A.DFS(content,"Elizabeth")
         pass
 
     # method for ordering children
@@ -301,12 +346,26 @@ class game():
             
             content[i]["children"] = childrenSorted
 
-        method.dumpJSON(content,"server.json")
+        dataintegrity = method.dumpJSON(content,"server.json")
+        method.checkDump(dataintegrity)
+
+    def constructTree(self):
+        G = game()
+        G.constructOrder()
+
+        treeGraph = {}
+
+        content = method.loadJSON("server.json")
+
+        for i in content:
+            treeGraph[i] = content[i]["children"]
+
+        print(treeGraph)
 
 
 
 
-# N = node()
+N = node()
 # method.clearall()
 # N.addNode("Elizabeth")
 # N.addChildren("Elizabeth",["Edward","Andrew"])
@@ -322,5 +381,7 @@ class game():
 # N.addAge("Mary",21)
 # N.addGuardian("Andrew","Mary")
 G = game()
-G.constructOrder()
+# G.constructOrder()
 # G.setCrownOrder()
+# G.constructTree()
+N.removeRogueNodes()
