@@ -440,24 +440,60 @@ class game():
             if content[i]["level"] == self.level:
                 curr_nodes.append(i)
 
-        print(curr_nodes)
+        return curr_nodes
 
+    @classmethod
+    def getLevels(self):
+        all_levels = []
+        
+        max_iter = node.getMaxLevel()
+        
+        currLevel = 0
+        while True:
+            if currLevel < max_iter:
+                lev = game.printLevel(currLevel)
+                all_levels.append(lev)
+                currLevel += 1
+            else:
+                break
+
+        return all_levels
+
+    @classmethod
+    def getChildrenArrows(self,li):
+        self.list = li
+        left_child = "/ "
+        right_child = chr(92)
+        center_child = "| " 
+
+        if len(self.list) == 1:
+            return list(center_child)
+        elif len(self.list) % 2 == 0: 
+            output = (((len(self.list)//2) * left_child) + ((len(self.list)//2 * right_child)))
+            childArrows = output.split()
+        elif len(self.list) % 2 != 0:
+            output = ((len(self.list) - 1) * left_child) + center_child + ((len(self.list) - 1) * right_child)
+            childArrows = output.split()
+        else:
+            raise ValueError ("unexpected list value")
+
+        return childArrows
 
     # print the tree graphically
     def printGraph(self):
 
-        content = method.loadJSON("server.json")
-
-        max_iter = node.getMaxLevel()
-        currLevel = 0
-
-        while True:
-            if currLevel < max_iter:
-                game.printLevel(currLevel)
-                currLevel += 1
-            else:
-                break
+        all_levels = game.getLevels()
         
+        for i in all_levels:
+            arrows = game.getChildrenArrows(i)
+            for a in arrows:
+                print(a,end=" ")
+            print()
+            for b in i:
+                print(b,end=" ")
+            print()
+
+
         
         
 
