@@ -91,7 +91,7 @@ class node():
         if self.name in content:
             raise ValueError ("duplicate nodes cannot exist")
 
-        dictFMT = {"children" : [], "alive" : True, "crownOrder" : math.nan, "age" : math.nan, "spouse" : "", 
+        dictFMT = {"children" : [], "alive" : True, "crownOrder" : math.nan, "level" : math.nan, "age" : math.nan, "spouse" : "", 
         "position" : "", "house" : ""}
 
         content[self.name] = dictFMT
@@ -139,6 +139,15 @@ class node():
         for j in self.children:
             N = node()
             N.addNode(j)
+
+    @classmethod
+    def getChildren(self,name):
+        self.name = name
+        content = method.loadJSON("server.json")
+
+        children = content[self.name]["children"]
+
+        return children
 
     def addAge(self,name,age):
         self.name = name
@@ -238,6 +247,7 @@ class node():
 
         content[self.name]["root"] = True
         # content[self.name]["crownOrder"] = 1
+        content[self.name]["level"] = 0
 
         dataintegrity = method.dumpJSON(content,"server.json")
         method.checkDump(dataintegrity)
@@ -358,6 +368,35 @@ class game():
         dataintegrity = method.dumpJSON(content,"server.json")
         method.checkDump(dataintegrity)
 
+    # construct levels
+    def constructLevel(self,max,level=0,counter=0):
+
+        if counter > max:
+            return None
+
+        try:
+            content = method.loadJSON("server.json")
+
+            levelVar = level
+
+            for i in content:
+                if content[i]["level"] == levelVar: # to find the root
+                    childrenLi = content[i]["children"]
+                    for j in childrenLi:
+                        content[j]["level"] = levelVar + 1
+                else:
+                    break
+
+            method.dumpJSON(content,"server.json")
+
+            G = game()
+            G.constructLevel(max,level=levelVar+1,counter=counter+1)
+
+        except:
+            pass
+
+
+    # construct the tree graph (dfs)
     def constructTree(self):
         G = game()
         G.constructOrder()
@@ -379,10 +418,18 @@ class game():
         dataintegrity = method.dumpJSON(dfsg,"tree.json")
         method.checkDump(dataintegrity)
         
+    # print the tree graphically
+    def printGraph(self):
+        pass
+        
+
+        
+
 
 
 
 N = node()
+G = game()
 # method.clearall()
 # N.addNode("Elizabeth")
 # N.addChildren("Elizabeth",["Edward","Andrew"])
@@ -394,10 +441,9 @@ N = node()
 # N.addSpouse("Elizabeth","Phillip")
 # N.addPosition("Elizabeth","Queen")
 # N.defineRoot("Elizabeth")
-# N.addNode("Mary")
-# N.addAge("Mary",21)
-# N.addGuardian("Andrew","Mary")
-G = game()
 # G.constructOrder()
-G.setCrownOrder()
+# G.setCrownOrder()
 # G.constructTree()
+# G.printGraph()
+# maxVar = len(method.loadJSON("server.json").keys())
+# G.constructLevel(maxVar)
