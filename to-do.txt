@@ -1,4 +1,2 @@
-- add ordering for the crown
-- create an aglo feedable graph
 - method to visualize the tree
 - create the RPG game

@@ -323,6 +323,17 @@ class node():
         dataintegrity = method.dumpJSON(content,"server.json")
         method.checkDump(dataintegrity)
 
+    @classmethod
+    def getMaxLevel(self):
+        content = method.loadJSON("server.json")
+        max_level = 0
+        
+        for i in content:
+            if content[i]["level"] > max_level:
+                max_level = content[i]["level"]
+            
+        return max_level +1 # because the order's ordering starts from 0
+
 
 
 class game():
@@ -395,7 +406,6 @@ class game():
         except:
             pass
 
-
     # construct the tree graph (dfs)
     def constructTree(self):
         G = game()
@@ -418,11 +428,37 @@ class game():
         dataintegrity = method.dumpJSON(dfsg,"tree.json")
         method.checkDump(dataintegrity)
         
+    @classmethod
+    def printLevel(self,level):
+
+        self.level = level
+        curr_nodes = []
+
+        content = method.loadJSON("server.json")
+        
+        for i in content:
+            if content[i]["level"] == self.level:
+                curr_nodes.append(i)
+
+        print(curr_nodes)
+
+
     # print the tree graphically
     def printGraph(self):
-        pass
-        
 
+        content = method.loadJSON("server.json")
+
+        max_iter = node.getMaxLevel()
+        currLevel = 0
+
+        while True:
+            if currLevel < max_iter:
+                game.printLevel(currLevel)
+                currLevel += 1
+            else:
+                break
+        
+        
         
 
 
@@ -447,3 +483,4 @@ G = game()
 # G.printGraph()
 # maxVar = len(method.loadJSON("server.json").keys())
 # G.constructLevel(maxVar)
+G.printGraph()
