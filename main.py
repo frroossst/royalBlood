@@ -513,9 +513,21 @@ class game():
         self.li = li
         max_space = game.getLastLevelSpace(self.li)
         empty_space = " "
+        last_level = node.getLastLevel()
+        childrenArrows = ["|","/","\\"]
 
         for i in self.li:
-            if i != "\n":
+            if i in last_level:
+                print(i,end=" ")
+            elif i == "|":
+                charLen = len(i)
+                emptyChars = (max_space - charLen) // 2
+                print(empty_space * emptyChars,i,end=" ")
+            elif i in childrenArrows:
+                charLen = len(i)
+                emptyChars = (max_space - charLen) // 4 # divide by five or four
+                print(empty_space * emptyChars,i,end=" ")
+            elif i != "\n":
                 charLen = len(i)
                 emptyChars = (max_space - charLen) // 2
                 print(empty_space * emptyChars, i, empty_space * emptyChars,end=" ")
