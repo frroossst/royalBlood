@@ -393,32 +393,20 @@ class game():
         method.checkDump(dataintegrity)
 
     # construct levels
-    def constructLevel(self,max,level=0,counter=0):
+    def constructLevel(self):
 
-        if counter > max:
-            return None
+        content = method.loadJSON("server.json")
+        
+        for i in content:
+            children = content[i]["children"]
+            currLevel = content[i]["level"]
+            if math.isnan(currLevel):
+                continue
+            for j in children:
+                content[j]["level"] = currLevel + 1
 
-        try:
-            content = method.loadJSON("server.json")
-
-            levelVar = level
-
-            for i in content:
-                if content[i]["level"] == levelVar: # to find the root
-                    childrenLi = content[i]["children"]
-                    for j in childrenLi:
-                        content[j]["level"] = levelVar + 1
-                else:
-                    break
-
-            dataIntegrity = method.dumpJSON(content,"server.json")
-            method.checkDump(dataIntegrity)
-
-            G = game()
-            G.constructLevel(max,level=levelVar+1,counter=counter+1)
-
-        except:
-            pass
+        dataIntegrity = method.dumpJSON(content,"server.json")
+        method.checkDump(dataIntegrity)
 
     # construct the tree graph (dfs)
     def constructTree(self):
@@ -536,10 +524,6 @@ class game():
             else:
                 print(i)
 
-
-
-
-
     # print the tree graphically
     def printGraph(self):
 
@@ -564,8 +548,6 @@ class game():
             
         G = game()
         G.spaceOutGraph(printLi)
-        
-
 
 
 
@@ -592,6 +574,6 @@ G = game()
 # G.constructOrder()
 # G.setCrownOrder()
 # G.constructTree()
-maxVar = len(method.loadJSON("server.json").keys())
-G.constructLevel(maxVar)
-# G.printGraph()
+# G.constructLevel()
+G.printGraph()
+# print(game.getAllLevels())

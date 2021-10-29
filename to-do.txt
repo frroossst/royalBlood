@@ -1,4 +1,6 @@
 - method to visualize the tree
     - print the tree uniformly
     - calculate total characters in the bottom row and maintain those characters from the top
-- create the RPG game-
+- create the RPG game
+- To fix level constructor
+    - upon adding chidlren assign them one level below the parents
