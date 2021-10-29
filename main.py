@@ -97,6 +97,7 @@ class node():
         dataintegrity = method.dumpJSON(content,"server.json")
         method.checkDump(dataintegrity)
 
+
     def deleteNode(self,name):
         self.name = name
 
@@ -128,7 +129,7 @@ class node():
 
         for i in self.children:
             if i in content:
-                raise ValueError ("all names must be globally unique")
+                raise ValueError (f"all names must be globally unique : {i}")
 
         content[self.parent]["children"] = self.children
 
@@ -410,7 +411,8 @@ class game():
                 else:
                     break
 
-            method.dumpJSON(content,"server.json")
+            dataIntegrity = method.dumpJSON(content,"server.json")
+            method.checkDump(dataIntegrity)
 
             G = game()
             G.constructLevel(max,level=levelVar+1,counter=counter+1)
@@ -571,10 +573,17 @@ N = node()
 G = game()
 # method.clearall()
 # N.addNode("Elizabeth")
-# N.addChildren("Elizabeth",["Edward","Andrew"])
+# N.addChildren("Elizabeth",["Andrew","Edward"])
+# N.addChildren("Andrew",["Jack","Jackson"])
+# N.addChildren("Edward",["Mary","Victoria","Pierre"])
 # N.addAge("Elizabeth",95)
 # N.addAge("Edward",15)
 # N.addAge("Andrew",21)
+# N.addAge("Jack",1)
+# N.addAge("Jackson",2)
+# N.addAge("Mary",16)
+# N.addAge("Victoria",19)
+# N.addAge("Pierre",24)
 # N.addHouse("Elizabeth","Windsor")
 # N.addNode("Phillip")
 # N.addSpouse("Elizabeth","Phillip")
@@ -583,7 +592,6 @@ G = game()
 # G.constructOrder()
 # G.setCrownOrder()
 # G.constructTree()
+maxVar = len(method.loadJSON("server.json").keys())
+G.constructLevel(maxVar)
 # G.printGraph()
-# maxVar = len(method.loadJSON("server.json").keys())
-# G.constructLevel(maxVar)
-G.printGraph()

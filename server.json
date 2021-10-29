@@ -8,27 +8,84 @@
             "crownOrder": 1,
             "level": 0,
             "age": 95,
-            "spouse": "Phillip",
+            "spouse": "",
             "position": "Queen",
             "house": "Windsor",
             "root": true
       },
-      "Edward": {
-            "children": [],
+      "Andrew": {
+            "children": [
+                  "Jackson",
+                  "Jack"
+            ],
             "alive": true,
-            "crownOrder": 3,
+            "crownOrder": 2,
+            "level": 1,
+            "age": 21,
+            "spouse": "",
+            "position": "",
+            "house": ""
+      },
+      "Edward": {
+            "children": [
+                  "Pierre",
+                  "Victoria",
+                  "Mary"
+            ],
+            "alive": true,
+            "crownOrder": 5,
             "level": 1,
             "age": 15,
             "spouse": "",
             "position": "",
             "house": ""
       },
-      "Andrew": {
+      "Jack": {
             "children": [],
             "alive": true,
-            "crownOrder": 2,
-            "level": 1,
-            "age": 21,
+            "crownOrder": 4,
+            "level": NaN,
+            "age": 1,
+            "spouse": "",
+            "position": "",
+            "house": ""
+      },
+      "Jackson": {
+            "children": [],
+            "alive": true,
+            "crownOrder": 3,
+            "level": NaN,
+            "age": 2,
+            "spouse": "",
+            "position": "",
+            "house": ""
+      },
+      "Mary": {
+            "children": [],
+            "alive": true,
+            "crownOrder": 8,
+            "level": NaN,
+            "age": 16,
+            "spouse": "",
+            "position": "",
+            "house": ""
+      },
+      "Victoria": {
+            "children": [],
+            "alive": true,
+            "crownOrder": 7,
+            "level": NaN,
+            "age": 19,
+            "spouse": "",
+            "position": "",
+            "house": ""
+      },
+      "Pierre": {
+            "children": [],
+            "alive": true,
+            "crownOrder": 6,
+            "level": NaN,
+            "age": 24,
             "spouse": "",
             "position": "",
             "house": ""
