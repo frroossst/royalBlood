@@ -1,6 +1,5 @@
 import json
 import math
-from typing import ContextManager
 
 
 
@@ -324,7 +323,7 @@ class node():
         method.checkDump(dataintegrity)
 
     @classmethod
-    def getMaxLevel(self):
+    def getMaxLevel(self) -> int:
         content = method.loadJSON("server.json")
         max_level = 0
         
@@ -333,6 +332,19 @@ class node():
                 max_level = content[i]["level"]
             
         return max_level +1 # because the order's ordering starts from 0
+
+    @classmethod
+    def getLastLevel(self) -> list:
+
+        content = method.loadJSON("server.json")
+        max_level = node.getMaxLevel() - 1
+        last_level_elements = []
+
+        for i in content:
+            if content[i]["level"] == max_level:
+                last_level_elements.append(i)
+
+        return last_level_elements
 
 
 
@@ -443,7 +455,7 @@ class game():
         return curr_nodes
 
     @classmethod
-    def getLevels(self):
+    def getAllLevels(self):
         all_levels = []
         
         max_iter = node.getMaxLevel()
@@ -467,7 +479,7 @@ class game():
         center_child = "| " 
 
         if len(self.list) == 1:
-            return list(center_child)
+            return center_child
         elif len(self.list) % 2 == 0: 
             output = (((len(self.list)//2) * left_child) + ((len(self.list)//2 * right_child)))
             childArrows = output.split()
@@ -479,22 +491,65 @@ class game():
 
         return childArrows
 
+    @classmethod
+    def getLastLevelSpace(self,li):
+        self.li = li
+        lastLevelSpace = 0
+        iterVar = -2
+
+        while True:
+            if self.li[iterVar].isalpha():
+                lastLevelSpace += len(self.li[iterVar])
+                lastLevelSpace += 1 # one additional space character for the space between words
+                iterVar -= 1
+            else:
+                lastLevelSpace -= 1
+                break
+
+        # print(lastLevelSpace)
+        return lastLevelSpace
+
+    def spaceOutGraph(self,li):
+        self.li = li
+        max_space = game.getLastLevelSpace(self.li)
+        empty_space = " "
+
+        for i in self.li:
+            if i != "\n":
+                charLen = len(i)
+                emptyChars = (max_space - charLen) // 2
+                print(empty_space * emptyChars, i, empty_space * emptyChars,end=" ")
+            else:
+                print(i)
+
+
+
+
+
     # print the tree graphically
     def printGraph(self):
 
-        all_levels = game.getLevels()
-        
+        all_levels = game.getAllLevels()
+        printLi = []
+
         for i in all_levels:
             arrows = game.getChildrenArrows(i)
             for a in arrows:
-                print(a,end=" ")
-            print()
+                # print(a,end=" ")
+                printLi.append(a)
+            printLi.append("\n")
+            # print()
             for b in i:
-                print(b,end=" ")
-            print()
+                # print(b,end=" ")
+                printLi.append(b)
+            # print()
+            printLi.append("\n")
 
-
-        
+        printLi.pop(1)
+        print(printLi)
+            
+        G = game()
+        G.spaceOutGraph(printLi)
         
 
 
