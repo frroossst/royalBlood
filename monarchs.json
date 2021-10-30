@@ -1,0 +1,23 @@
+{
+    "firstNames" : { "male" : ["Alexandrina","Alexandta","Albert","Alfred","Charles",
+        "Constantine","David","Duncan","Edward","Edmund","Edgar","Francis","George","Harold","Henry","James",
+        "John","Louis","Macbeth","Oliver","Phillip","Phillipe","Richard","Robert","Rudolph","Stephen",
+        "Sweyn","William"],
+                     
+        "female" : ["Anne","Elizabeth","Jane","Mary","Margaret","Matilda","Victoria"]
+                    },
+
+    "lastNames" : ["Godwinson","Harefoot","Ironside","Lackland","Longshanks","Rufus"],
+
+    "houses" : ["Anjou","Anne","Augustus","David","Ernest","Frederick","Godwin","Hannover","Lancaster",
+        "Louis","Normandy","Stuart","Tudor","Windsor","Wessex","York"],
+
+    "titles" : ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV",
+        "XVI","XVII","XVIII","XIX","XX","the Great","the Elder","the Peaceful","the Martyr",
+        "the Confessor","the Lion","the Magnificent","the Great","the Fair","the Bald",
+        "the Stammerer","the Brave","the Fat","the Simple","the Bold","the Saint","the Iron King",
+        "the Quarreller","the Tall","the Just","the Restorer","the Beloved","the Sun Gate",
+        "the Desired","the Conqueror","the Unready","the Lionheart","the Virgin","the Barbarian",
+        "the Stewart","the Lame King",""]
+
+}

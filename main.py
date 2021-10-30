@@ -1,3 +1,4 @@
+import random
 import json
 import math
 
@@ -526,28 +527,21 @@ class game():
 
     # print the tree graphically
     def printGraph(self):
+        
+        max_level = node.getMaxLevel()
+        iterVar = 0
 
-        all_levels = game.getAllLevels()
-        printLi = []
-
-        for i in all_levels:
-            arrows = game.getChildrenArrows(i)
-            for a in arrows:
-                # print(a,end=" ")
-                printLi.append(a)
-            printLi.append("\n")
-            # print()
-            for b in i:
-                # print(b,end=" ")
-                printLi.append(b)
-            # print()
-            printLi.append("\n")
-
-        printLi.pop(1)
-        print(printLi)
+        while True:
+            if iterVar < max_level:
+                currLevel = game.printLevel(iterVar)
+                print(currLevel)
+                iterVar += 1
+            else:
+                break
             
-        G = game()
-        G.spaceOutGraph(printLi)
+
+
+
 
 
 
