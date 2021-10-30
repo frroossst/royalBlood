@@ -1,16 +1,16 @@
 {
-    "firstNames" : { "male" : ["Alexandrina","Alexandta","Albert","Alfred","Charles",
-        "Constantine","David","Duncan","Edward","Edmund","Edgar","Francis","George","Harold","Henry","James",
+    "firstNames" : { "male" : ["Alexandrina","Alexandta","Albert","Alfred","Augustus","Charles",
+        "Charlamagne","Constantine","David","Duncan","Edward","Edmund","Edgar","Francis","George","Harold","Henry","James",
         "John","Louis","Macbeth","Oliver","Phillip","Phillipe","Richard","Robert","Rudolph","Stephen",
         "Sweyn","William"],
                      
-        "female" : ["Anne","Elizabeth","Jane","Mary","Margaret","Matilda","Victoria"]
+        "female" : ["Anne","Charlotte","Eleanor","Elizabeth","Jane","Kate","Mary","Margaret","Matilda","Victoria"]
                     },
 
     "lastNames" : ["Godwinson","Harefoot","Ironside","Lackland","Longshanks","Rufus"],
 
     "houses" : ["Anjou","Anne","Augustus","David","Ernest","Frederick","Godwin","Hannover","Lancaster",
-        "Louis","Normandy","Stuart","Tudor","Windsor","Wessex","York"],
+        "Louis","Normandy","Stuart","Tudor","Wales","Windsor","Wessex","York"],
 
     "titles" : ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV",
         "XVI","XVII","XVIII","XIX","XX","the Great","the Elder","the Peaceful","the Martyr",
@@ -18,6 +18,9 @@
         "the Stammerer","the Brave","the Fat","the Simple","the Bold","the Saint","the Iron King",
         "the Quarreller","the Tall","the Just","the Restorer","the Beloved","the Sun Gate",
         "the Desired","the Conqueror","the Unready","the Lionheart","the Virgin","the Barbarian",
-        "the Stewart","the Lame King",""]
+        "the Stewart","the Lame King"],
+
+    "offices" : {"male" : ["Emperor","King","Prince","Duke","Count","Lord","Baron"],
+                 "female" : ["Empress","Queen","Princess","Duchess","Countess","Lady","Dame","Baroness"]}
 
 }
