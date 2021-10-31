@@ -539,9 +539,31 @@ class game():
             else:
                 break
             
+    def generateNodes(self,n):
+        self.n = n
 
+        content = method.loadJSON("monarchs.json")
 
+        all_first_names = content["firstNames"]["male"]
+        all_first_names.extend(content["firstNames"]["female"])
+        all_last_names = content["lastNames"]
+        all_houses = content["houses"]
+        
+        sample_first_name = random.sample(all_first_names,self.n)
+        sample_last_name = random.sample(all_last_names,self.n)
+        sample_houses = random.sample(all_houses,1)
 
+        names = []
+
+        zipped = zip(sample_first_name,sample_last_name)
+        for i in zipped:
+            new_name = i[0] + " " +i[1]
+            names.append(new_name)
+
+        N = node()
+        for j in names:
+            N.addNode(j)
+            
 
 
 
@@ -569,5 +591,6 @@ G = game()
 # G.setCrownOrder()
 # G.constructTree()
 # G.constructLevel()
-G.printGraph()
+# G.printGraph()
 # print(game.getAllLevels())
+G.generateNodes(10)

@@ -7,10 +7,10 @@
         "female" : ["Anne","Charlotte","Eleanor","Elizabeth","Jane","Kate","Mary","Margaret","Matilda","Victoria"]
                     },
 
-    "lastNames" : ["Godwinson","Harefoot","Ironside","Lackland","Longshanks","Rufus"],
+    "lastNames" : ["Godwinson","Harefoot","Ironside","Lackland","Longshanks","Rufus","Caesar","Cassius","Harlem","Longbards","Nostralius"],
 
-    "houses" : ["Anjou","Anne","Augustus","David","Ernest","Frederick","Godwin","Hannover","Lancaster",
-        "Louis","Normandy","Stuart","Tudor","Wales","Windsor","Wessex","York"],
+    "houses" : ["of Anjou","of Ernest","of Frederick","of Hannover","of Lancaster",
+        "of Louis","of Normandy","of Stuart","of Tudor","of Wales","of Windsor","of Wessex","of York"],
 
     "titles" : ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV",
         "XVI","XVII","XVIII","XIX","XX","the Great","the Elder","the Peaceful","the Martyr",
