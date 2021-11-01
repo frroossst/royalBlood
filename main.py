@@ -1,6 +1,7 @@
 import random
 import json
 import math
+import os
 
 
 
@@ -82,7 +83,9 @@ class algorithm():
 class node():
 
     def __init__(self) -> None:
-        pass
+        if not os.path.exists("server.json"):
+            empty = {}
+            method.dumpJSON(empty,"server.json")
 
     def addNode(self,name) -> None:
         self.name = name
@@ -92,7 +95,7 @@ class node():
             raise ValueError ("duplicate nodes cannot exist")
 
         dictFMT = {"children" : [], "alive" : True, "crownOrder" : math.nan, "level" : math.nan, "age" : math.nan, "spouse" : "", 
-        "position" : "", "house" : ""}
+        "position" : "", "house" : "", "title" : ""}
 
         content[self.name] = dictFMT
         dataintegrity = method.dumpJSON(content,"server.json")
@@ -229,6 +232,17 @@ class node():
         content = method.loadJSON("server.json")
 
         content[self.name]["house"] = ""
+
+        dataintegrity = method.dumpJSON(content,"server.json")
+        method.checkDump(dataintegrity)
+
+    def addTitle(self,name,title):
+        self.name = name
+        self.title = title
+
+        content = method.loadJSON("server.json")
+
+        content[self.name]["title"] = self.title
 
         dataintegrity = method.dumpJSON(content,"server.json")
         method.checkDump(dataintegrity)
@@ -538,6 +552,12 @@ class game():
                 iterVar += 1
             else:
                 break
+    @classmethod
+    def cleanupAge(self,li):
+        
+        # take in dict rom server.json and level and assign ages accordingly
+        pass
+
             
     def generateNodes(self,n):
         self.n = n
@@ -548,23 +568,25 @@ class game():
         all_first_names.extend(content["firstNames"]["female"])
         all_last_names = content["lastNames"]
         all_houses = content["houses"]
+        all_titles = content["titles"]
         
         sample_first_name = random.sample(all_first_names,self.n)
-        sample_last_name = random.sample(all_last_names,self.n)
-        sample_houses = random.sample(all_houses,1)
+        sample_last_name = random.choices(all_last_names,k=self.n)
+        sample_house = random.sample(all_houses,1)
+        sample_title = random.sample(all_titles,self.n)
+        sample_age = random.sample(range(1,100),self.n)
+        sample_age.sort(reverse=True)
 
         names = []
 
-        zipped = zip(sample_first_name,sample_last_name)
-        for i in zipped:
-            new_name = i[0] + " " +i[1]
-            names.append(new_name)
-
+        zipped = zip(sample_first_name,sample_last_name,sample_title,sample_age)
         N = node()
-        for j in names:
-            N.addNode(j)
-            
-
+        for i in zipped:
+            name = i[0] + " " + i[1]
+            N.addNode(name)
+            N.addTitle(name,i[2])
+            N.addAge(name,i[3])
+        
 
 
 N = node()

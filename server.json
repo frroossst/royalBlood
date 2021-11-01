@@ -1,93 +1,112 @@
 {
-      "Elizabeth": {
-            "children": [
-                  "Andrew",
-                  "Edward"
-            ],
+      "Duncan Nostralius": {
+            "children": [],
             "alive": true,
-            "crownOrder": 1,
-            "level": 0,
+            "crownOrder": NaN,
+            "level": NaN,
             "age": 95,
             "spouse": "",
-            "position": "Queen",
-            "house": "Windsor",
-            "root": true
-      },
-      "Andrew": {
-            "children": [
-                  "Jackson",
-                  "Jack"
-            ],
-            "alive": true,
-            "crownOrder": 2,
-            "level": 1,
-            "age": 21,
-            "spouse": "",
             "position": "",
-            "house": ""
+            "house": "",
+            "title": "the Bald"
       },
-      "Edward": {
-            "children": [
-                  "Pierre",
-                  "Victoria",
-                  "Mary"
-            ],
-            "alive": true,
-            "crownOrder": 5,
-            "level": 1,
-            "age": 15,
-            "spouse": "",
-            "position": "",
-            "house": ""
-      },
-      "Jack": {
+      "Kate Longshanks": {
             "children": [],
             "alive": true,
-            "crownOrder": 4,
-            "level": 2,
-            "age": 1,
+            "crownOrder": NaN,
+            "level": NaN,
+            "age": 91,
             "spouse": "",
             "position": "",
-            "house": ""
+            "house": "",
+            "title": "the Iron King"
       },
-      "Jackson": {
+      "Robert Longshanks": {
             "children": [],
             "alive": true,
-            "crownOrder": 3,
-            "level": 2,
-            "age": 2,
+            "crownOrder": NaN,
+            "level": NaN,
+            "age": 78,
             "spouse": "",
             "position": "",
-            "house": ""
+            "house": "",
+            "title": "XIII"
       },
-      "Mary": {
+      "Louis Ironside": {
             "children": [],
             "alive": true,
-            "crownOrder": 8,
-            "level": 2,
-            "age": 16,
+            "crownOrder": NaN,
+            "level": NaN,
+            "age": 65,
             "spouse": "",
             "position": "",
-            "house": ""
+            "house": "",
+            "title": "the Just"
       },
-      "Victoria": {
+      "Edward Nostralius": {
             "children": [],
             "alive": true,
-            "crownOrder": 7,
-            "level": 2,
+            "crownOrder": NaN,
+            "level": NaN,
+            "age": 54,
+            "spouse": "",
+            "position": "",
+            "house": "",
+            "title": "the Martyr"
+      },
+      "Alexandta Caesar": {
+            "children": [],
+            "alive": true,
+            "crownOrder": NaN,
+            "level": NaN,
+            "age": 53,
+            "spouse": "",
+            "position": "",
+            "house": "",
+            "title": "the Bold"
+      },
+      "John Lackland": {
+            "children": [],
+            "alive": true,
+            "crownOrder": NaN,
+            "level": NaN,
+            "age": 34,
+            "spouse": "",
+            "position": "",
+            "house": "",
+            "title": "the Lame King"
+      },
+      "Richard Caesar": {
+            "children": [],
+            "alive": true,
+            "crownOrder": NaN,
+            "level": NaN,
+            "age": 28,
+            "spouse": "",
+            "position": "",
+            "house": "",
+            "title": "the Conqueror"
+      },
+      "Matilda Ironside": {
+            "children": [],
+            "alive": true,
+            "crownOrder": NaN,
+            "level": NaN,
+            "age": 20,
+            "spouse": "",
+            "position": "",
+            "house": "",
+            "title": "XIX"
+      },
+      "Francis Cassius": {
+            "children": [],
+            "alive": true,
+            "crownOrder": NaN,
+            "level": NaN,
             "age": 19,
             "spouse": "",
             "position": "",
-            "house": ""
-      },
-      "Pierre": {
-            "children": [],
-            "alive": true,
-            "crownOrder": 6,
-            "level": 2,
-            "age": 24,
-            "spouse": "",
-            "position": "",
-            "house": ""
+            "house": "",
+            "title": "II"
       }
 }
