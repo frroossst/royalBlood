@@ -94,13 +94,12 @@ class node():
         if self.name in content:
             raise ValueError ("duplicate nodes cannot exist")
 
-        dictFMT = {"children" : [], "alive" : True, "crownOrder" : math.nan, "level" : math.nan, "age" : math.nan, "spouse" : "", 
+        dictFMT = {"children" : [],"isFemale" : True,"alive" : True, "crownOrder" : math.nan, "level" : math.nan, "age" : math.nan, "spouse" : "", 
         "position" : "", "house" : "", "title" : ""}
 
         content[self.name] = dictFMT
         dataintegrity = method.dumpJSON(content,"server.json")
         method.checkDump(dataintegrity)
-
 
     def deleteNode(self,name):
         self.name = name
@@ -108,6 +107,18 @@ class node():
         content = method.loadJSON("server.json")
 
         del content[self.name]
+
+        dataintegrity = method.dumpJSON(content,"server.json")
+        method.checkDump(dataintegrity)
+
+    def addGender(self):
+
+        content = method.loadJSON("server.json")
+        mon = method.loadJSON("monarchs.json")
+
+        for i in content:
+            if i not in mon["firstNames"]["female"]:
+                content[i]["isFemale"] = False
 
         dataintegrity = method.dumpJSON(content,"server.json")
         method.checkDump(dataintegrity)
