@@ -602,15 +602,30 @@ class game():
             N.addTitle(name,i[2])
             N.addAge(name,i[3])
             N.addHouse(name,sample_house)
-            children_number = random.randint(0,len(sample_first_name_child))
-            children_population = 
-            new_children = random.sample()
+            
+            children_number = random.randint(0,len(sample_first_name_child)//2)
+            children_population = sample_first_name_child[:children_number]
+            children_population_mod = []
+
+            for j in children_population:
+                k = j + " " + i[1]
+                children_population_mod.append(k)
+
+            for i in children_population:
+                if i in sample_first_name_child:
+                    sample_first_name_child.remove(i)
+
+            N.addChildren(name,children_population_mod)
+
+            # content = method.loadJSON("server.json")
+            # for a in content:
+            #     parentAge = content[a]["age"]
 
 
 
 N = node()
 G = game()
-# method.clearall()
+method.clearall()
 # N.addNode("Elizabeth")
 # N.addChildren("Elizabeth",["Andrew","Edward"])
 # N.addChildren("Andrew",["Jack","Jackson"])

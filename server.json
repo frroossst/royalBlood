@@ -1,112 +1,263 @@
 {
-      "Duncan Nostralius": {
-            "children": [],
+      "Alfred Rufus": {
+            "children": [
+                  "Matilda Rufus",
+                  "Charlamagne Rufus",
+                  "Augustus Rufus",
+                  "Victoria Rufus",
+                  "Albert Rufus"
+            ],
+            "isFemale": true,
             "alive": true,
             "crownOrder": NaN,
             "level": NaN,
-            "age": 95,
+            "age": 90,
             "spouse": "",
             "position": "",
-            "house": "",
-            "title": "the Bald"
-      },
-      "Kate Longshanks": {
-            "children": [],
-            "alive": true,
-            "crownOrder": NaN,
-            "level": NaN,
-            "age": 91,
-            "spouse": "",
-            "position": "",
-            "house": "",
+            "house": [
+                  "of Tudor"
+            ],
             "title": "the Iron King"
       },
-      "Robert Longshanks": {
+      "Matilda Rufus": {
             "children": [],
+            "isFemale": true,
             "alive": true,
             "crownOrder": NaN,
             "level": NaN,
-            "age": 78,
+            "age": NaN,
             "spouse": "",
             "position": "",
             "house": "",
-            "title": "XIII"
+            "title": ""
       },
-      "Louis Ironside": {
+      "Charlamagne Rufus": {
             "children": [],
+            "isFemale": true,
             "alive": true,
             "crownOrder": NaN,
             "level": NaN,
-            "age": 65,
+            "age": NaN,
             "spouse": "",
             "position": "",
             "house": "",
-            "title": "the Just"
+            "title": ""
       },
-      "Edward Nostralius": {
+      "Augustus Rufus": {
             "children": [],
+            "isFemale": true,
             "alive": true,
             "crownOrder": NaN,
             "level": NaN,
-            "age": 54,
+            "age": NaN,
             "spouse": "",
             "position": "",
             "house": "",
-            "title": "the Martyr"
+            "title": ""
       },
-      "Alexandta Caesar": {
+      "Victoria Rufus": {
             "children": [],
+            "isFemale": true,
             "alive": true,
             "crownOrder": NaN,
             "level": NaN,
-            "age": 53,
+            "age": NaN,
             "spouse": "",
             "position": "",
             "house": "",
-            "title": "the Bold"
+            "title": ""
       },
-      "John Lackland": {
+      "Albert Rufus": {
             "children": [],
+            "isFemale": true,
             "alive": true,
             "crownOrder": NaN,
             "level": NaN,
-            "age": 34,
+            "age": NaN,
             "spouse": "",
             "position": "",
             "house": "",
-            "title": "the Lame King"
+            "title": ""
       },
-      "Richard Caesar": {
-            "children": [],
+      "Richard Harefoot": {
+            "children": [
+                  "Alexandta Harefoot"
+            ],
+            "isFemale": true,
             "alive": true,
             "crownOrder": NaN,
             "level": NaN,
-            "age": 28,
+            "age": 88,
             "spouse": "",
             "position": "",
-            "house": "",
-            "title": "the Conqueror"
+            "house": [
+                  "of Tudor"
+            ],
+            "title": "the Magnificent"
       },
-      "Matilda Ironside": {
+      "Alexandta Harefoot": {
             "children": [],
+            "isFemale": true,
             "alive": true,
             "crownOrder": NaN,
             "level": NaN,
-            "age": 20,
+            "age": NaN,
             "spouse": "",
             "position": "",
             "house": "",
+            "title": ""
+      },
+      "Phillipe Nostralius": {
+            "children": [
+                  "David Nostralius",
+                  "Jane Nostralius"
+            ],
+            "isFemale": true,
+            "alive": true,
+            "crownOrder": NaN,
+            "level": NaN,
+            "age": 84,
+            "spouse": "",
+            "position": "",
+            "house": [
+                  "of Tudor"
+            ],
+            "title": "the Tall"
+      },
+      "David Nostralius": {
+            "children": [],
+            "isFemale": true,
+            "alive": true,
+            "crownOrder": NaN,
+            "level": NaN,
+            "age": NaN,
+            "spouse": "",
+            "position": "",
+            "house": "",
+            "title": ""
+      },
+      "Jane Nostralius": {
+            "children": [],
+            "isFemale": true,
+            "alive": true,
+            "crownOrder": NaN,
+            "level": NaN,
+            "age": NaN,
+            "spouse": "",
+            "position": "",
+            "house": "",
+            "title": ""
+      },
+      "Rudolph Harefoot": {
+            "children": [],
+            "isFemale": true,
+            "alive": true,
+            "crownOrder": NaN,
+            "level": NaN,
+            "age": 77,
+            "spouse": "",
+            "position": "",
+            "house": [
+                  "of Tudor"
+            ],
+            "title": "VIII"
+      },
+      "John Caesar": {
+            "children": [],
+            "isFemale": true,
+            "alive": true,
+            "crownOrder": NaN,
+            "level": NaN,
+            "age": 71,
+            "spouse": "",
+            "position": "",
+            "house": [
+                  "of Tudor"
+            ],
+            "title": "the Peaceful"
+      },
+      "Anne Godwinson": {
+            "children": [
+                  "Margaret Godwinson"
+            ],
+            "isFemale": true,
+            "alive": true,
+            "crownOrder": NaN,
+            "level": NaN,
+            "age": 70,
+            "spouse": "",
+            "position": "",
+            "house": [
+                  "of Tudor"
+            ],
+            "title": "the Virgin"
+      },
+      "Margaret Godwinson": {
+            "children": [],
+            "isFemale": true,
+            "alive": true,
+            "crownOrder": NaN,
+            "level": NaN,
+            "age": NaN,
+            "spouse": "",
+            "position": "",
+            "house": "",
+            "title": ""
+      },
+      "James Longshanks": {
+            "children": [],
+            "isFemale": true,
+            "alive": true,
+            "crownOrder": NaN,
+            "level": NaN,
+            "age": 67,
+            "spouse": "",
+            "position": "",
+            "house": [
+                  "of Tudor"
+            ],
             "title": "XIX"
       },
-      "Francis Cassius": {
+      "Sweyn Caesar": {
             "children": [],
+            "isFemale": true,
             "alive": true,
             "crownOrder": NaN,
             "level": NaN,
-            "age": 19,
+            "age": 61,
             "spouse": "",
             "position": "",
-            "house": "",
-            "title": "II"
+            "house": [
+                  "of Tudor"
+            ],
+            "title": "the Sun King"
+      },
+      "Charlotte Lackland": {
+            "children": [],
+            "isFemale": true,
+            "alive": true,
+            "crownOrder": NaN,
+            "level": NaN,
+            "age": 57,
+            "spouse": "",
+            "position": "",
+            "house": [
+                  "of Tudor"
+            ],
+            "title": "V"
+      },
+      "Duncan Harefoot": {
+            "children": [],
+            "isFemale": true,
+            "alive": true,
+            "crownOrder": NaN,
+            "level": NaN,
+            "age": 47,
+            "spouse": "",
+            "position": "",
+            "house": [
+                  "of Tudor"
+            ],
+            "title": "III"
       }
 }
