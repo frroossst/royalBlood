@@ -571,7 +571,8 @@ class game():
 
             
     def generateNodes(self,n):
-        self.n = n
+
+        self.n = n * 2
 
         content = method.loadJSON("monarchs.json")
 
@@ -583,21 +584,28 @@ class game():
         
         sample_first_name = random.sample(all_first_names,self.n)
         sample_last_name = random.choices(all_last_names,k=self.n)
+        sample_first_name_parent = sample_first_name[:self.n//2]
+        sample_last_name_parent = sample_last_name[:self.n//2]
+        sample_first_name_child = sample_first_name[self.n//2:]
         sample_house = random.sample(all_houses,1)
         sample_title = random.sample(all_titles,self.n)
         sample_age = random.sample(range(1,100),self.n)
         sample_age.sort(reverse=True)
 
-        names = []
+        zipped = zip(sample_first_name_parent,sample_last_name_parent,sample_title,sample_age)
 
-        zipped = zip(sample_first_name,sample_last_name,sample_title,sample_age)
         N = node()
+
         for i in zipped:
             name = i[0] + " " + i[1]
             N.addNode(name)
             N.addTitle(name,i[2])
             N.addAge(name,i[3])
-        
+            N.addHouse(name,sample_house)
+            children_number = random.randint(0,len(sample_first_name_child))
+            children_population = 
+            new_children = random.sample()
+
 
 
 N = node()
