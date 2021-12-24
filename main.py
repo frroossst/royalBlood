@@ -564,12 +564,23 @@ class game():
             else:
                 break
     @classmethod
-    def cleanupAge(self,li):
+    def cleanupAge(self):
         
-        # take in dict rom server.json and level and assign ages accordingly
-        pass
+        # take in dict from server.json and level and assign ages accordingly
 
+        diff_parent_child = 20 # min age diff between parent and child
+        diff_sib = 2 # min age diff between siblings
+
+        content = method.loadJSON("server.json")
+
+        for i in content:
+            curr_parent = i
+            curr_children = node.getChildren(curr_parent)
+            curr_age = node.getAge(curr_parent)
             
+
+
+
     def generateNodes(self,n):
 
         self.n = n * 2
@@ -625,28 +636,6 @@ class game():
 
 N = node()
 G = game()
-method.clearall()
-# N.addNode("Elizabeth")
-# N.addChildren("Elizabeth",["Andrew","Edward"])
-# N.addChildren("Andrew",["Jack","Jackson"])
-# N.addChildren("Edward",["Mary","Victoria","Pierre"])
-# N.addAge("Elizabeth",95)
-# N.addAge("Edward",15)
-# N.addAge("Andrew",21)
-# N.addAge("Jack",1)
-# N.addAge("Jackson",2)
-# N.addAge("Mary",16)
-# N.addAge("Victoria",19)
-# N.addAge("Pierre",24)
-# N.addHouse("Elizabeth","Windsor")
-# N.addNode("Phillip")
-# N.addSpouse("Elizabeth","Phillip")
-# N.addPosition("Elizabeth","Queen")
-# N.defineRoot("Elizabeth")
-# G.constructOrder()
-# G.setCrownOrder()
-# G.constructTree()
-# G.constructLevel()
-# G.printGraph()
-# print(game.getAllLevels())
-G.generateNodes(10)
+# method.clearall()
+# G.generateNodes(10)
+G.cleanupAge()

@@ -1,25 +1,25 @@
 {
-      "Alfred Rufus": {
+      "David Harefoot": {
             "children": [
-                  "Matilda Rufus",
-                  "Charlamagne Rufus",
-                  "Augustus Rufus",
-                  "Victoria Rufus",
-                  "Albert Rufus"
+                  "George Harefoot",
+                  "Edmund Harefoot",
+                  "Alfred Harefoot",
+                  "Francis Harefoot",
+                  "Elizabeth Harefoot"
             ],
             "isFemale": true,
             "alive": true,
             "crownOrder": NaN,
             "level": NaN,
-            "age": 90,
+            "age": 97,
             "spouse": "",
             "position": "",
             "house": [
-                  "of Tudor"
+                  "of York"
             ],
-            "title": "the Iron King"
+            "title": "the Sun King"
       },
-      "Matilda Rufus": {
+      "George Harefoot": {
             "children": [],
             "isFemale": true,
             "alive": true,
@@ -31,7 +31,7 @@
             "house": "",
             "title": ""
       },
-      "Charlamagne Rufus": {
+      "Edmund Harefoot": {
             "children": [],
             "isFemale": true,
             "alive": true,
@@ -43,7 +43,7 @@
             "house": "",
             "title": ""
       },
-      "Augustus Rufus": {
+      "Alfred Harefoot": {
             "children": [],
             "isFemale": true,
             "alive": true,
@@ -55,7 +55,7 @@
             "house": "",
             "title": ""
       },
-      "Victoria Rufus": {
+      "Francis Harefoot": {
             "children": [],
             "isFemale": true,
             "alive": true,
@@ -67,7 +67,7 @@
             "house": "",
             "title": ""
       },
-      "Albert Rufus": {
+      "Elizabeth Harefoot": {
             "children": [],
             "isFemale": true,
             "alive": true,
@@ -79,9 +79,10 @@
             "house": "",
             "title": ""
       },
-      "Richard Harefoot": {
+      "Robert Harefoot": {
             "children": [
-                  "Alexandta Harefoot"
+                  "Alexandta Harefoot",
+                  "James Harefoot"
             ],
             "isFemale": true,
             "alive": true,
@@ -91,9 +92,9 @@
             "spouse": "",
             "position": "",
             "house": [
-                  "of Tudor"
+                  "of York"
             ],
-            "title": "the Magnificent"
+            "title": "III"
       },
       "Alexandta Harefoot": {
             "children": [],
@@ -107,24 +108,35 @@
             "house": "",
             "title": ""
       },
-      "Phillipe Nostralius": {
+      "James Harefoot": {
+            "children": [],
+            "isFemale": true,
+            "alive": true,
+            "crownOrder": NaN,
+            "level": NaN,
+            "age": NaN,
+            "spouse": "",
+            "position": "",
+            "house": "",
+            "title": ""
+      },
+      "Constantine Harlem": {
             "children": [
-                  "David Nostralius",
-                  "Jane Nostralius"
+                  "Phillip Harlem"
             ],
             "isFemale": true,
             "alive": true,
             "crownOrder": NaN,
             "level": NaN,
-            "age": 84,
+            "age": 87,
             "spouse": "",
             "position": "",
             "house": [
-                  "of Tudor"
+                  "of York"
             ],
             "title": "the Tall"
       },
-      "David Nostralius": {
+      "Phillip Harlem": {
             "children": [],
             "isFemale": true,
             "alive": true,
@@ -136,31 +148,47 @@
             "house": "",
             "title": ""
       },
-      "Jane Nostralius": {
+      "Edward Cassius": {
             "children": [],
             "isFemale": true,
             "alive": true,
             "crownOrder": NaN,
             "level": NaN,
-            "age": NaN,
-            "spouse": "",
-            "position": "",
-            "house": "",
-            "title": ""
-      },
-      "Rudolph Harefoot": {
-            "children": [],
-            "isFemale": true,
-            "alive": true,
-            "crownOrder": NaN,
-            "level": NaN,
-            "age": 77,
+            "age": 80,
             "spouse": "",
             "position": "",
             "house": [
-                  "of Tudor"
+                  "of York"
             ],
-            "title": "VIII"
+            "title": "the Barbarian"
+      },
+      "Victoria Longshanks": {
+            "children": [
+                  "Mary Longshanks"
+            ],
+            "isFemale": true,
+            "alive": true,
+            "crownOrder": NaN,
+            "level": NaN,
+            "age": 66,
+            "spouse": "",
+            "position": "",
+            "house": [
+                  "of York"
+            ],
+            "title": "XVIII"
+      },
+      "Mary Longshanks": {
+            "children": [],
+            "isFemale": true,
+            "alive": true,
+            "crownOrder": NaN,
+            "level": NaN,
+            "age": NaN,
+            "spouse": "",
+            "position": "",
+            "house": "",
+            "title": ""
       },
       "John Caesar": {
             "children": [],
@@ -168,57 +196,29 @@
             "alive": true,
             "crownOrder": NaN,
             "level": NaN,
-            "age": 71,
+            "age": 65,
             "spouse": "",
             "position": "",
             "house": [
-                  "of Tudor"
+                  "of York"
             ],
-            "title": "the Peaceful"
+            "title": "the Restorer"
       },
-      "Anne Godwinson": {
-            "children": [
-                  "Margaret Godwinson"
-            ],
-            "isFemale": true,
-            "alive": true,
-            "crownOrder": NaN,
-            "level": NaN,
-            "age": 70,
-            "spouse": "",
-            "position": "",
-            "house": [
-                  "of Tudor"
-            ],
-            "title": "the Virgin"
-      },
-      "Margaret Godwinson": {
+      "Kate Rufus": {
             "children": [],
             "isFemale": true,
             "alive": true,
             "crownOrder": NaN,
             "level": NaN,
-            "age": NaN,
-            "spouse": "",
-            "position": "",
-            "house": "",
-            "title": ""
-      },
-      "James Longshanks": {
-            "children": [],
-            "isFemale": true,
-            "alive": true,
-            "crownOrder": NaN,
-            "level": NaN,
-            "age": 67,
+            "age": 64,
             "spouse": "",
             "position": "",
             "house": [
-                  "of Tudor"
+                  "of York"
             ],
-            "title": "XIX"
+            "title": "the Lame King"
       },
-      "Sweyn Caesar": {
+      "Eleanor Nostralius": {
             "children": [],
             "isFemale": true,
             "alive": true,
@@ -228,36 +228,36 @@
             "spouse": "",
             "position": "",
             "house": [
-                  "of Tudor"
+                  "of York"
             ],
-            "title": "the Sun King"
+            "title": "X"
       },
-      "Charlotte Lackland": {
+      "Charles Nostralius": {
             "children": [],
             "isFemale": true,
             "alive": true,
             "crownOrder": NaN,
             "level": NaN,
-            "age": 57,
+            "age": 60,
             "spouse": "",
             "position": "",
             "house": [
-                  "of Tudor"
+                  "of York"
             ],
-            "title": "V"
+            "title": "the Quarreller"
       },
-      "Duncan Harefoot": {
+      "Stephen Caesar": {
             "children": [],
             "isFemale": true,
             "alive": true,
             "crownOrder": NaN,
             "level": NaN,
-            "age": 47,
+            "age": 55,
             "spouse": "",
             "position": "",
             "house": [
-                  "of Tudor"
+                  "of York"
             ],
-            "title": "III"
+            "title": "the Lionheart"
       }
 }
